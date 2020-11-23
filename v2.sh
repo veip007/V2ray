@@ -806,7 +806,7 @@ install_v2ray() {
 		cp -rf $(pwd)/* /etc/v2ray/233boy/v2ray
 	else
 		pushd /tmp
-		git clone https://github.com/233boy/v2ray -b "$_gitbranch" /etc/v2ray/233boy/v2ray --depth=1
+		git clone https://github.com/veip007/v2ray -b "$_gitbranch" /etc/v2ray/233boy/v2ray --depth=1
 		popd
 
 	fi
@@ -890,7 +890,9 @@ get_ip() {
 	[[ -z $ip ]] && ip=$(curl -s https://api.myip.com | grep -oE "([0-9]{1,3}\.){3}[0-9]{1,3}")
 	[[ -z $ip ]] && ip=$(curl -s icanhazip.com)
 	[[ -z $ip ]] && ip=$(curl -s myip.ipip.net | grep -oE "([0-9]{1,3}\.){3}[0-9]{1,3}")
-	[[ -z $ip ]] && echo -e "\n$red 这垃圾小鸡扔了吧！$none\n" && exit
+	[[ -z $ip ]] && echo -e "\n$red 您小鸡未安装Curl！
+	Debian、Ubuntu系统请使用命令:apt-get install curl
+	centos系统使用:yum -y install curl $none\n" && exit
 }
 
 error() {
